@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const GENDERS = ["M", "F", "Male", "Female", "male", "female"];
+
 const CustomerSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -16,7 +18,7 @@ const CustomerSchema = new mongoose.Schema({
     gender: {
         type: String,
         required: true,
-        enum: ["male", "female"],
+        enum: GENDERS,
     },
 });
 
