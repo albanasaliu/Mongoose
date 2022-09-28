@@ -1,12 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Router = require("./routes");
+const config = require("./config");
 
 const app = express();
 
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://albanasaliu:Idkhow999@node-mongo.krmjco1.mongodb.net/Node-Mongo-Conn?retryWrites=true&w=majority',
+mongoose.connect(config.mongo.host,
     {
         useNewUrlParser: true
     }
@@ -18,7 +19,7 @@ db.once("open", function () {
     console.log("Connected successfully");
 });
 
-app.use("/", Router);
+app.use(Router);
 
 app.listen(3000, () => {
     console.log("Server is running at port 3000");

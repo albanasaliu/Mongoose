@@ -1,15 +1,24 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
+const CustomerSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
     },
-    lucky_number: {
+    price: {
         type: Number,
         default: 0,
     },
+    active: {
+        type: Boolean,
+        required: true,
+    },
+    gender: {
+        type: String,
+        required: true,
+        enum: ["male", "female"],
+    },
 });
 
-const User = mongoose.model("User", UserSchema);
-module.exports = User;
+const Customer = mongoose.model("Customer", CustomerSchema);
+module.exports = Customer;

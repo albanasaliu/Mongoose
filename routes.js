@@ -1,25 +1,25 @@
 const express = require("express");
-const userModel = require("./models");
+const CustomerModel = require("./models");
 const app = express();
 
-app.post("/add_user", async (request, response) => {
-    const user = new userModel(request.body);
+app.post("/add_customer", async (req, res) => {
+    const customer = new CustomerModel(req.body);
 
     try {
-        await user.save();
-        response.send(user);
+        await customer.save();
+        res.send(customer);
     } catch (error) {
-        response.status(500).send(error);
+        res.status(500).send(error);
     }
 });
 
-app.get("/users", async (request, response) => {
-    const users = await userModel.find({});
+app.get("/customers", async (req, res) => {
+    const customer = await CustomerModel.find({});
 
     try {
-        response.send(users);
+        res.send(customer);
     } catch (error) {
-        response.status(500).send(error);
+        res.status(500).send(error);
     }
 });
 
