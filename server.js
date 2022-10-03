@@ -1,5 +1,5 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const mongoose = new require("mongoose");
 const Router = require("./routes");
 const config = require("./config");
 
@@ -9,7 +9,8 @@ app.use(express.json());
 
 mongoose.connect(config.mongo.host,
     {
-        useNewUrlParser: true
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
     }
 );
 
